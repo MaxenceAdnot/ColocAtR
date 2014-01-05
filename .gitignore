@@ -41,6 +41,9 @@ local.properties
 *.user
 *.sln.docstates
 
+#lel
+Web.config
+
 # Build results
 
 [Dd]ebug/
