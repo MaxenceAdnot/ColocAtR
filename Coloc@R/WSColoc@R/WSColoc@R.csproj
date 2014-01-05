@@ -82,7 +82,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Authentication\Auth.svc" />
+    <Content Include="ColocAtR\ColocAtR.svc" />
     <Content Include="README.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -95,8 +95,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\Auth.svc.cs">
-      <DependentUpon>Auth.svc</DependentUpon>
+    <Compile Include="ColocAtR\ColocAtR.svc.cs">
+      <DependentUpon>ColocAtR.svc</DependentUpon>
     </Compile>
     <Compile Include="DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
@@ -104,7 +104,7 @@
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
     <Compile Include="DataContracts\WSAuthMessage.cs" />
-    <Compile Include="Authentication\IAuth.cs" />
+    <Compile Include="ColocAtR\IColocAtR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

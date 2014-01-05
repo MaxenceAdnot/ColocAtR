@@ -7,7 +7,7 @@ namespace WSColocAtR
 {
 
     [ServiceBehavior]
-    public class Auth : IAuth
+    public class ColocAtR : IColocAtR
     {
 
         DataClassesDataContext data = new DataClassesDataContext();
@@ -153,6 +153,27 @@ namespace WSColocAtR
 
             return Response;
         }
+
+        public WSAuthMessage Kevbac(string token)
+        {
+            WSAuthMessage Response = new WSAuthMessage();
+
+
+            if (RefreshLastActivity(token).StatusCode == StatusCode.OK)
+            {
+                var session = GetSession(token);
+
+                var userAge = (from users in data.Users
+                                 where users.idUser == session.idUser
+                                 select users.age).FirstOrDefault();
+
+                Response.StatusCode = StatusCode.OK;
+                Response.Data = (userAge == null ? -1 : userAge).ToString();
+            }
+
+            return Response;
+        }
+
 
         bool CheckIfOnline(string token)
         {

@@ -3,7 +3,7 @@
 namespace WSColocAtR
 {
     [ServiceContract]
-    public interface IAuth
+    public interface IColocAtR
     {
 
         //
@@ -24,5 +24,8 @@ namespace WSColocAtR
         // Retourne le nom de l'utilisateur
         [OperationContract]
         WSAuthMessage Whoami(string token);
+
+        [OperationContract]
+        WSAuthMessage Kevbac(string token);
     }
 }

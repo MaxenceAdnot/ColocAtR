@@ -122,7 +122,7 @@
     <comment>Temps d'inactivité avant déconnexion</comment>
   </data>
   <data name="TokenSize" xml:space="preserve">
-    <value>250</value>
+    <value>3</value>
     <comment>Nombre de caractère pour token</comment>
   </data>
 </root>

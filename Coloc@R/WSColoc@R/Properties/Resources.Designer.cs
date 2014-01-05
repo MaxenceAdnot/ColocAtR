@@ -70,7 +70,7 @@ namespace WSColocAtR.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 250.
+        ///   Looks up a localized string similar to 3.
         /// </summary>
         internal static string TokenSize {
             get {
