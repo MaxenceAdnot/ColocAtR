@@ -209,10 +209,28 @@ namespace WSColocAtR
             {
                 var session = GetSession(token);
 
-                // TODO : Remplissage du profil
+                session.User.type = type;
+                session.User.age = age;
+                session.User.priceColoc = price;
+                session.User.city = (from cityNum in data.Cities
+                                     where cityNum.libelleCity.ToLower() == city.ToLower()
+                                     select cityNum.idCity).FirstOrDefault();
+                session.User.descUser = desc;
+                session.User.m2Coloc = m2;
+                
+                try
+                {
+                    data.SubmitChanges();
+                }
+                catch
+                {
+                    Response.StatusCode = StatusCode.Error;
+                    Response.Data = "Impossible de mettre à jour la base de données";
+                    return Response;
+                }
 
                 Response.StatusCode = StatusCode.OK;
-                Response.Data = "Code de retour";
+                Response.Data = "Profil mis à jour";
             }
             return Response;
         }
@@ -225,10 +243,27 @@ namespace WSColocAtR
             {
                 var session = GetSession(token);
 
-                // TODO : Changement du mot de passe
-
-                Response.StatusCode = StatusCode.OK;
-                Response.Data = "Code de retour";
+                if (session.User.passwordUser == Utils.ToSha256(oldPassword))
+                {
+                    session.User.passwordUser = Utils.ToSha256(newPassword);
+                    Response.StatusCode = StatusCode.OK;
+                    Response.Data = "Mot de passe mis à jour";
+                    try
+                    {
+                        data.SubmitChanges();
+                    }
+                    catch
+                    {
+                        Response.StatusCode = StatusCode.Error;
+                        Response.Data = "Impossible de mettre à jour la base de données";
+                        return Response;
+                    }
+                }
+                else
+                {
+                    Response.StatusCode = StatusCode.AccessRefused;
+                    Response.Data = "Ancien mot de passe incorrect";
+                }
             }
             return Response;
         }
