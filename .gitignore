@@ -42,7 +42,7 @@ local.properties
 *.sln.docstates
 
 #lel
-Web.config
+*Web.config
 
 # Build results
 

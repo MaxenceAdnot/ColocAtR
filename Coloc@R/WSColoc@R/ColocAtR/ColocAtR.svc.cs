@@ -19,10 +19,71 @@ namespace WSColocAtR
         {
             WSAuthMessage Response = new WSAuthMessage();
 
-            // TODO : Creation compte
+            if( String.IsNullOrEmpty(login) 
+                || String.IsNullOrEmpty(email) 
+                || String.IsNullOrEmpty(password) 
+                || String.IsNullOrEmpty(firstName) 
+                || String.IsNullOrEmpty(lastName)
+                )
+            {
+                Response.StatusCode = StatusCode.Error;
+                Response.Data = "Un des champs n'est pas renseigné.";
+                return Response;
+            }
 
-            Response.StatusCode = StatusCode.OK;
-            Response.Data = "Code de retour";
+            // on vérifie que le mail ne soit pas déjà utilisé
+            var mailList = (from users in data.Users
+                             where users.emailUser == email
+                             select users);
+
+            if (mailList.Count() != 0)
+            {
+                Response.StatusCode = StatusCode.Error;
+                Response.Data = "Cette adresse mail est déjà utilisée.";
+                return Response;
+            }
+
+            // on vérifie que le login ne soit pas déjà utilisé
+            var loginList = (from users in data.Users
+                                where users.loginUser == login
+                                select users);
+
+            if (loginList.Count() != 0 )
+            {
+                Response.StatusCode = StatusCode.Error;
+                Response.Data = "Ce login est déjà utilisé.";
+                return Response;
+            }
+
+            try
+            {
+
+                //   Créer un enregistrement de User
+                var newUser = new User();
+                newUser.loginUser = login;
+                newUser.passwordUser = password;
+                newUser.emailUser = email;
+                newUser.firstNameUser = firstName;
+                newUser.lastNameUser = lastName;
+
+                //default values
+                newUser.city = 0;
+                newUser.age = 0;
+                newUser.type = false; 
+                newUser.priceColoc = 0;
+
+                data.Users.InsertOnSubmit(newUser);
+                data.SubmitChanges();
+
+                Response.StatusCode = StatusCode.OK;
+                Response.Data = newUser.loginUser;
+            }
+            catch
+            {
+                Response.StatusCode = StatusCode.Error;
+                Response.Data = "Impossible de mettre à jour la base de données";
+                return Response;
+            }
 
             return Response;
         }
@@ -269,7 +330,7 @@ namespace WSColocAtR
         }
 
         #endregion
-
+        
         public WSAuthMessage GetScoringResults(string token)
         {
             WSAuthMessage Response = new WSAuthMessage();
