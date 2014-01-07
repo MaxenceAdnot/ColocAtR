@@ -278,7 +278,7 @@ namespace WSColocAtR
                                      select cityNum.idCity).FirstOrDefault();
                 session.User.descUser = desc;
                 session.User.m2Coloc = m2;
-                
+
                 try
                 {
                     data.SubmitChanges();
@@ -347,5 +347,58 @@ namespace WSColocAtR
             return Response;
         }
 
+
+        public WSProfile RetrieveProfileUN(string token, string username)
+        {
+            WSProfile profile = new WSProfile();
+
+            if (RefreshLastActivity(token).StatusCode == StatusCode.OK)
+            {
+                var profileDB = (from p in data.Users
+                                 where p.loginUser == username
+                                 select p).First();
+
+                if (profileDB == null)
+                {
+                    profile.type = profileDB.type;
+                    profile.age = profileDB.age;
+                    profile.city = (from c in data.Cities
+                                    where c.idCity == profileDB.city
+                                    select c.libelleCity).FirstOrDefault().ToLower();
+                    profile.desc = profileDB.descUser;
+                    profile.price = profileDB.priceColoc;
+                    profile.m2 = (int)profileDB.m2Coloc;
+                }
+            }
+
+            return profile;
+        }
+
+        public WSProfile RetrieveProfileUID(string token, int userID)
+        {
+            WSProfile profile = new WSProfile();
+
+            if (RefreshLastActivity(token).StatusCode == StatusCode.OK)
+            {
+                var profileDB = (from p in data.Users
+                                 where p.idUser == userID
+                                 select p).First();
+
+                if (profileDB == null)
+                {
+                    profile.type = profileDB.type;
+                    profile.age = profileDB.age;
+                    profile.city = (from c in data.Cities
+                                    where c.idCity == profileDB.city
+                                    select c.libelleCity).FirstOrDefault().ToLower();
+                    profile.desc = profileDB.descUser;
+                    profile.price = profileDB.priceColoc;
+                    profile.m2 = (int)profileDB.m2Coloc;
+                }
+            }
+
+            return profile;
+        }
+    
     }
 }
