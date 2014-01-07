@@ -287,7 +287,7 @@ namespace WSColocAtR
         }
 
 
-        public WSProfile RetrieveProfile(string token, string username)
+        public WSProfile RetrieveProfileUN(string token, string username)
         {
             WSProfile profile = new WSProfile();
 
@@ -313,7 +313,7 @@ namespace WSColocAtR
             return profile;
         }
 
-        public WSProfile RetrieveProfile(string token, int userID)
+        public WSProfile RetrieveProfileUID(string token, int userID)
         {
             WSProfile profile = new WSProfile();
 
