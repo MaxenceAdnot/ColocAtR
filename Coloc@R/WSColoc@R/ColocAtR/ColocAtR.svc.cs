@@ -2,6 +2,8 @@
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.Collections;
+using System.Linq;
 
 namespace WSColocAtR
 {
@@ -61,7 +63,7 @@ namespace WSColocAtR
                 //   Créer un enregistrement de User
                 var newUser = new User();
                 newUser.loginUser = login;
-                newUser.passwordUser = password;
+                newUser.passwordUser = Utils.ToSha256(password);
                 newUser.emailUser = email;
                 newUser.firstNameUser = firstName;
                 newUser.lastNameUser = lastName;
@@ -339,10 +341,54 @@ namespace WSColocAtR
             {
                 var session = GetSession(token);
 
-                // TODO : Check Scoring
+                var user = (from p in data.Users
+                            where p.idUser == session.idUser
+                            select p).First();
+
+                ArrayList matched = new ArrayList();
+
+                // Perfect match
+                var perfectMatch = (from p in data.Users
+                                    where p.type == true
+                                     && p.city == user.city
+                                     && p.age == user.age
+                                     && p.priceColoc == user.priceColoc
+                                    select p);
+
+                foreach (User u in perfectMatch)
+                {
+                    matched.Add(u);
+                }
+
+                // Unperfect match
+                var unperfectMatch = (from p in data.Users
+                                      where p.type == true
+                                       && p.city == user.city
+                                       && p.age <= user.age + 5
+                                       && p.age >= user.age - 5
+                                       && p.priceColoc <= user.priceColoc + 100
+                                       && p.priceColoc >= user.priceColoc - 100
+                                      select p);
+
+                foreach (User u in unperfectMatch)
+                {
+                    if (!matched.Contains(u))
+                        matched.Add(u);
+                }
+
+                string result = "";
+                foreach(User u in matched)
+                {
+                    result += "{ " + u.ToString() + " }";
+                }
 
                 Response.StatusCode = StatusCode.OK;
-                Response.Data = "Code de retour";
+                Response.Data = result;
+            }
+            else
+            {
+                Response.Data = "Utilisateur non connecté.";
+                Response.StatusCode = StatusCode.AccessRefused;
             }
             return Response;
         }
