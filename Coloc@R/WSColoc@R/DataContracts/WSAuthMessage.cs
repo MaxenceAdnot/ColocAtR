@@ -8,6 +8,24 @@ using System.Text;
 namespace WSColocAtR
 {
 
+    [DataContract]
+    public class WSProfile
+    {
+        [DataMember]
+        public bool type;
+        [DataMember]
+        public int age;
+        [DataMember]
+        public int price;
+        [DataMember]
+        public string city;
+        [DataMember]
+        public string desc;
+        [DataMember]
+        public int m2;
+    }
+
+
     [DataContract] 
     public enum StatusCode
     {
@@ -42,6 +60,5 @@ namespace WSColocAtR
             get { return data; }
             set { data = value; }
         }
-
     }
 }
