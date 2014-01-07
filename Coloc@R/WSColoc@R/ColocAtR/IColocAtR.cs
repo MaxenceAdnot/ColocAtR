@@ -54,6 +54,12 @@ namespace WSColocAtR
         [OperationContract]
         WSAuthMessage GetScoringResults(string token);
 
+        [OperationContract]
+        WSProfile RetrieveProfile(string token, string username);
+
+        [OperationContract]
+        WSProfile RetrieveProfile(string token, int userID);
+
         #endregion
 
     }
