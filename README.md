@@ -14,3 +14,8 @@ Il faut lancer dans l'ordre :
 2. ASPNETColoc@R - Site ASP.NET
 3. WPFColocAtR - Application WPF
 4. WPColoc@R - App Windows Phone 8
+
+Compte de démo :
+
+email :        demo@demo.com
+mot de passe : demo
