@@ -12,6 +12,12 @@ namespace WSColocAtR
     public class WSProfile
     {
         [DataMember]
+        public string username;
+        [DataMember]
+        public string firstName;
+        [DataMember]
+        public string lastName;
+        [DataMember]
         public bool type;
         [DataMember]
         public int age;
@@ -23,6 +29,27 @@ namespace WSColocAtR
         public string desc;
         [DataMember]
         public int m2;
+        [DataMember]
+        public string email;
+
+        public override bool Equals(System.Object obj)
+        {
+            // If parameter is null return false.
+            if (obj == null)
+            {
+                return false;
+            }
+
+            // If parameter cannot be cast to Point return false.
+            WSProfile p = obj as WSProfile;
+            if ((System.Object)p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (username == p.username);
+        }
     }
 
 

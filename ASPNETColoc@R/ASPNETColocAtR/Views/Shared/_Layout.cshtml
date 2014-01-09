@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle"></button>
+                <div class="navbar-brand">@Html.ActionLink("Coloc@R", "Index", "Home")</div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Mettre les différents boutons du menu ici -->
+                    <li>@Html.ActionLink("Colocation ?", "About", "Home")</li>
+                    <li>@Html.ActionLink("Maintenant c'est à vous !", "Scoring", "Home")</li>
+                    <li>@Html.ActionLink("Nous contacter", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </div>
+        </div>
+        <div id="body">
+            <!-- la section featured de "index.cshtml" fait le cadre bleu -->
+            <section class="featured">
+                <div class="content-wrapper">
+                    <hgroup class="title" style="margin-top:20px; margin-left:390px;">
+                        <h1>Coloc@R</h1>
+                    </hgroup>
+                </div>
+            </section>
+
+
+
+
+            <section class="content-wrapper main-content clear-fix">
+                <!-- Ici ce situe le cadre gris de la page principale -->
+                @RenderBody()
+            </section>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

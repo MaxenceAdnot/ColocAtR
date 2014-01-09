@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WSColocAtR" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WSColocAtR" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="WSAuthMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" type="tns:StatusCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WSAuthMessage" nillable="true" type="tns:WSAuthMessage" />
+  <xs:simpleType name="StatusCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="AccessRefused" />
+      <xs:enumeration value="OK" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatusCode" nillable="true" type="tns:StatusCode" />
+  <xs:complexType name="ArrayOfWSProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WSProfile" nillable="true" type="tns:WSProfile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWSProfile" nillable="true" type="tns:ArrayOfWSProfile" />
+  <xs:complexType name="WSProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="age" type="xs:int" />
+      <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="desc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="m2" type="xs:int" />
+      <xs:element minOccurs="0" name="price" type="xs:int" />
+      <xs:element minOccurs="0" name="type" type="xs:boolean" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WSProfile" nillable="true" type="tns:WSProfile" />
+</xs:schema>

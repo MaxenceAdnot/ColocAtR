@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections;
+using System.ServiceModel;
 
 namespace WSColocAtR
 {
@@ -52,7 +53,7 @@ namespace WSColocAtR
         //
         // Retourne les annonces correspondantes aux critères de l'utilisateur
         [OperationContract]
-        WSAuthMessage GetScoringResults(string token);
+        WSProfile[] GetScoringResults(string token);
 
         [OperationContract]
         WSProfile RetrieveProfileUN(string token, string username);

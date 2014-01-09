@@ -1,0 +1,27 @@
+﻿@using ASPNETColocAtR.WSColocAtR;
+
+@{
+    ViewBag.Title = "Colocations pour vous !";
+}
+
+<h2>Les colocations pour vous !</h2>
+
+<br /><p>En se basant sur vos critères nous avons pu déterminer des colocations qui pourraient vous correspondre.</p>
+
+<ul>
+    @foreach (WSProfile profile in ViewBag.profilesTab)
+    {
+        <li>
+            @{
+                String s = (Convert.ToString(profile.city.ElementAt(0)).ToUpper() + profile.city.Substring(1));
+                
+                    if (profile.type == true){
+                            <p>@profile.username possède une colocation de @profile.m2 m²</p>
+                    }
+           }
+                <p>Ville : @s - Loyer : @profile.price</p>
+                <p>Nom : @profile.lastName - Prénom : @profile.firstName</p>
+                <p>Age : @profile.age - Email : @profile.email</p>
+        </li>
+    }
+</ul>

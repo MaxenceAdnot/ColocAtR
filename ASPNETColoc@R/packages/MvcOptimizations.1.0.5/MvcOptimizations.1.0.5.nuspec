@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>MvcOptimizations</id>
+    <version>1.0.5</version>
+    <title>MvcOptimizations</title>
+    <authors>Tore Lervik</authors>
+    <owners>Tore Lervik</owners>
+    <projectUrl>https://github.com/hallatore/MvcOptimizations</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Performance utilities for MVC4 applications</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Mvc" version="4.0.20710.0" />
+    </dependencies>
+  </metadata>
+</package>

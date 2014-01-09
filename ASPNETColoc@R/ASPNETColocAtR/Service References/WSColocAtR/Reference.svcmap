@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ded82f82-59a9-4198-942f-0c74d0ba85cd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50791/ColocAtR/ColocAtR.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ColocAtR3.xsd" MetadataType="Schema" ID="a9138e1f-cce7-4a83-a70a-42312a409835" SourceId="1" SourceUrl="http://localhost:50791/ColocAtR/ColocAtR.svc?xsd=xsd0" />
+    <MetadataFile FileName="ColocAtR31.xsd" MetadataType="Schema" ID="d2515bda-e0a3-49af-8eba-e1a9c8a2b40e" SourceId="1" SourceUrl="http://localhost:50791/ColocAtR/ColocAtR.svc?xsd=xsd1" />
+    <MetadataFile FileName="ColocAtR1.disco" MetadataType="Disco" ID="63aac06a-e943-416c-91cc-09f05be49515" SourceId="1" SourceUrl="http://localhost:50791/ColocAtR/ColocAtR.svc?disco" />
+    <MetadataFile FileName="ColocAtR1.wsdl" MetadataType="Wsdl" ID="3c3db4ec-920a-453a-9f16-8838d56c46cc" SourceId="1" SourceUrl="http://localhost:50791/ColocAtR/ColocAtR.svc?wsdl" />
+    <MetadataFile FileName="ColocAtR32.xsd" MetadataType="Schema" ID="e75828cf-b1cc-455f-846c-64e6851e9967" SourceId="1" SourceUrl="http://localhost:50791/ColocAtR/ColocAtR.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

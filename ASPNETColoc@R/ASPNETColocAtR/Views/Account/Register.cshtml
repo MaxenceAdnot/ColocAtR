@@ -1,0 +1,44 @@
+﻿@model ASPNETColocAtR.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<hgroup class="title">
+    <h2>S'inscrire</h2>
+</hgroup>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Formulaire d'inscription</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.username)
+                @Html.TextBoxFor(m => m.username)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.email)
+                @Html.TextBoxFor(m => m.email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.password)
+                @Html.PasswordFor(m => m.password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.firstname)
+                @Html.TextBoxFor(m => m.firstname)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.lastname)
+                @Html.TextBoxFor(m => m.lastname)
+            </li>
+        </ol>
+        <input type="submit" value="Inscription" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

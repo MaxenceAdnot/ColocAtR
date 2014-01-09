@@ -1,0 +1,15 @@
+﻿@if (null != Request.Cookies["User"] && !Request.Cookies["User"]["Username"].IsEmpty())
+{
+    <li>
+        @Html.ActionLink(Request.Cookies["User"]["Username"], "Index", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+    </li>
+    <li>
+        @Html.ActionLink("Déconnexion", "SignOut", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </li>
+
+}
+else
+{
+    <li>@Html.ActionLink("S'inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Se connecter", "Index", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+}

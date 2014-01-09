@@ -1,0 +1,65 @@
+﻿@model ASPNETColocAtR.Models.ProfilWizardModel
+
+@{
+    ViewBag.Title = "Mettre à jour le profil";
+}
+
+<h2>Mettre à jour le profil</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Changer de mot de passe</legend>
+        <div id="form_auth" style="padding-top:15px;">
+            <h4 style="color:red; margin-top:15px; margin-bottom:20px;">@ViewBag.Message</h4>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.type)
+            </div>
+            <div class="editor-field">
+               J'ai un logement à offrir  @Html.EditorFor(model => model.type)
+            </div>
+            <br/>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.age)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.age)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.city)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.city)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.price)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.price)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.desc)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.desc)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.m2)
+            </div>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.m2)
+            </div>
+            <p>
+                <input type="submit" value="Valider" />
+            </p>
+        </div>
+    </fieldset>
+}
+
+<button onclick="location.href='@Url.Action("Index", "Account")';return false;" style="margin-left: 500px;">Retour</button>
